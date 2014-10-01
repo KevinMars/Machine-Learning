@@ -1,0 +1,225 @@
+SHOW DATA
+SHOW DATABASES
+QUIT()
+SHOW DATABASES
+;
+CREATE DATABASE tennis;
+SHOW DATABASES;
+use tennis;
+describe tennis;
+describe;
+show tables;
+pwd;
+create table fun;
+create table fun (when DATE,who VARCHAR(100),funtype INT(100));
+create table fun (when VARCHAR(10),who VARCHAR(100),funtype INT(100));
+create table fun (funwhen DATE,funwho VARCHAR(100),funtype INT(1));
+insert into fun values ('2014-09-23', 'My homies', 2);
+describe fun;
+show fun;
+select * from fun;
+ls -l
+SHOW DATABASE
+;
+SHOW DATABASES;
+USE tennis
+SHOW TABLES;
+create table us_men_2013 (player1 VARCHAR(100), player2 VARCHAR(100), round CHAR(5), result CHAR(5), fnl1 CHAR(5), fnl2 CHAR(5), fsp_1 CHAR(5), fsw_1 CHAR(5), ssp_1 CHAR(5), ssw_1 CHAR(5), ace_1 CHAR(5), dbf_1 CHAR(5), wnr_1 CHAR(5), ufe_1 CHAR(5), bpc_1 CHAR(5), bpw_1 CHAR(5), npa_1 CHAR(5), npw_1 CHAR(5), tpw_1 CHAR(5), st1_1 CHAR(5), st2_1 CHAR(5), st3_1 CHAR(5), st4_1 CHAR(5), st5_1 CHAR(5), fsp_2 CHAR(5), fsw_2 CHAR(5), ssp_2 CHAR(5), ssw_2 CHAR(5), ace_2 CHAR(5), dbf_2 CHAR(5), wnr_2 CHAR(5), ufe_2 CHAR(5), bpc_2 CHAR(5), bpw_2 CHAR(5), npa_2 CHAR(5), npw_2 CHAR(5), tpw_2 CHAR(5), st1_2 CHAR(5), st2_2 CHAR(5), st3_2 CHAR(5), st4_2 CHAR(5), st5_2 CHAR(5));
+create table wimbledon_men_2013 like us_men_2013;
+load data local infile 'USOpen-men-2013.csv' into table us_men_2013 fields terminated by "," ignore 1 lines;
+load data local infile 'wimbledon-men-2013.csv' into table wimbledon_men_2013 fields terminated by "," ignore 1 lines;
+load data local infile 'tennis/data/wimbledon-men-2013.csv' into table wimbledon_men_2013 fields terminated by "," ignore 1 lines;
+load data local infile 'tennis/data/Wimbledon-men-2013.csv' into table wimbledon_men_2013 fields terminated by "," ignore 1 lines;
+load data local infile 'Wimbledon-men-2013.csv' into table wimbledon_men_2013 fields terminated by "," ignore 1 lines;
+select player1, result from us_men_2013 where player1="Richard Gasquet" limit 5;
+select player1, result from us_men_2013 where player1="Richard Gasquet";
+SELECT us_men_2013.player1, us_men_2013.result, wimbledon_men_2013.result FROM us_men_2013, wimbledon_men_2013 WHERE us_men_2013.player1 = wimbledon_men_2013.player1;
+SELECT us_men_2013.player1, us_men_2013.result, aus_men_2013.result FROM us_men_2013, aus_men_2013 WHERE us_men_2013.player1 = aus_men_2013.player1;
+SELECT us_men_2013.player1, us_men_2013.result AS "USresult", aus_men_2013.result AS "Frenchresult" FROM us_men_2013, aus_men_2013 WHERE us_men_2013.player1 = aus_men_2013.player1;
+show tables;
+ls
+;
+create table french_men_2013 LIKE us_men_2013;
+load data local infile 'FrenchOpen-men-2013.csv' into table french_men_2013 fields terminated by "," ignore 1 lines;
+show tables;
+select player1, result from us_men_2013;
+select player1, result from us_men_2013 GROUP BY player1;
+select player1, result from us_men_2013 GROUP BY result;
+select player1, result from us_men_2013 COUNT(result);
+select player1, result from us_men_2013 COUNT;
+select COUNT(player1), result from us_men_2013;
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+SELECT us_men_2013.player1, us_men_2013.result AS "USresult", aus_men_2013.result AS "Frenchresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us_men_2013.player1 = aus_men_2013.player1 OR au.player2;
+SELECT us.player1, us.result AS "USresult", aus.result AS "Frenchresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR aus.player2;
+SELECT us.player1, us.result AS "USresult", aus.result AS "Frenchresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR aus.player2 GROUP BY us.player1;
+SELECT us.player1, us.result AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR aus.player2 GROUP BY us.player1;
+SELECT us.player1, us.result AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR aus.player2;
+SELECT us.player1, us.result AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1;
+SELECT us.player1, us.result AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 AND aus.player2;
+SELECT us.player1, us.result AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2;
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+select player1, COUNT(result) from us_men_2013;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 GROUP BY us.player1;
+SELECT aus.player1, us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 GROUP BY us.player1;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 GROUP BY us.player1;
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 OR us.player1 GROUP BY us.player1;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 GROUP BY us.player1;
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 GROUP BY us.player1;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 GROUP BY us.player1;
+SELECT french_open_2013, us_open_2013, wimbledon_open_2013, aus_open_2013
+
+SELECT french_open_2013, us_open_2013
+FROM french_open_2013 
+JOIN us_open_2013
+ls
+;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 GROUP BY us.player1;
+show databases;
+use tennis
+show databases;
+use tennis;
+show databases;
+show tables;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 GROUP BY us.player1;
+SELECT french_open_2013, us_open_2013
+FROM french_open_2013
+INNER JOIN us_open_2013
+ON french_open_2013.player1 = us_open_2013.player1;
+SELECT french_open_2013, us_open_2013 FROM french_open_2013 INNER JOIN us_open_2013 ON french_open_2013.player1 = us_open_2013.player1;
+SELECT french_men_2013, us_men_2013 FROM french_men_2013 INNER JOIN us_men_2013 ON french_men_2013.player1 = us_men_2013.player1;
+show tables;
+select * from french_men_2013 limit 5;
+SELECT french_men_2013, us_men_2013 FROM french_men_2013 INNER JOIN us_men_2013 ON french_men_2013.player1 = us_men_2013.player1;
+SELECT french_men_2013.player1, french_men_2013.result, us_men_2013.player1, us_men_2013.result FROM french_men_2013 INNER JOIN us_men_2013 ON french_men_2013.player1 = us_men_2013.player1;
+SELECT french_men_2013.player1, french_men_2013.result, us_men_2013.player2, us_men_2013.player1, us_men_2013.result FROM french_men_2013 INNER JOIN us_men_2013 ON french_men_2013.player1 = us_men_2013.player1 OR french_men_2013.player1 = us_men_2013.player2;
+SELECT french_men_2013.player1, french_men_2013.result, us_men_2013.player1, us_men_2013.player2, us_men_2013.result FROM french_men_2013 INNER JOIN us_men_2013 ON french_men_2013.player1 = us_men_2013.player1 OR french_men_2013.player1 = us_men_2013.player2;
+SELECT us.player1, COUNT(us.result) AS "USresult" FROM us_men_2013 AS us, aus_men_2013 AS aus WHERE us.player1 = aus.player1 OR us.player1 = aus.player2 GROUP BY us.player1;
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+select player2, COUNT(result) from us_men_2013 GROUP BY player1;
+SELECT * from (select player1, COUNT(result) from us_men_2013 GROUP BY player1)
+SELECT * from (select player2, COUNT(result) from us_men_2013 GROUP BY player2)
+;
+SELECT * from (select player1, COUNT(result) from us_men_2013 GROUP BY player1) SELECT * from (select player2, COUNT(result) from us_men_2013 GROUP BY player2);
+SELECT * from (select player1, COUNT(result) from us_men_2013 GROUP BY player1);
+select player1, COUNT(result) from us_men_2013 GROUP BY player1);
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+select player2, COUNT(result) from us_men_2013 GROUP BY player2;
+select player2, COUNT(result) from us_men_2013 GROUP BY player2
+union
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+select player2, COUNT(result) from us_men_2013 GROUP BY player2 union select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+select player2, COUNT(result) from us_men_2013 GROUP BY player2 union select player1, COUNT(result) from us_men_2013 GROUP BY player1
+GROUP BY player2;
+select player2, COUNT(result) from us_men_2013 GROUP BY player2 union select player1, COUNT(result) from us_men_2013 GROUP BY player1 GROUP BY player2;
+(select player2, COUNT(result) from us_men_2013 GROUP BY player2 union select player1, COUNT(result) from us_men_2013 GROUP BY player1) GROUP BY player2;
+(select player2, COUNT(result) from us_men_2013 GROUP BY player2 union select player1, COUNT(result) from us_men_2013 GROUP BY player1);
+(select player2, COUNT(result) from us_men_2013 GROUP BY player2) union (select player1, COUNT(result) from us_men_2013 GROUP BY player1);
+(select player2, COUNT(result) from us_men_2013 GROUP BY player2) union (select player1, COUNT(result) from us_men_2013 GROUP BY player1) GROUP BY player2;
+(select player2, SUM(result) from us_men_2013 GROUP BY player2) union (select player1, SUM(result) from us_men_2013 GROUP BY player1);
+(select player1, SUM(result) from us_men_2013 GROUP BY player1) union (select player2, SUM(result) from us_men_2013 GROUP BY player2);
+((select player1, SUM(result) from us_men_2013 GROUP BY player1) LEFT JOIN (select player2, SUM(result) from us_men_2013 GROUP BY player2) ON player1 = player2) union (select player1, SUM(result) from us_men_2013 GROUP BY player1) RIGHT JOIN (select player2, SUM(result) from us_men_2013 GROUP BY player2);
+((select player1, SUM(result) from us_men_2013 GROUP BY player1) LEFT JOIN (select player2, SUM(result) from us_men_2013 GROUP BY player2) ON player1 = player2) union ((select player1, SUM(result) from us_men_2013 GROUP BY player1) RIGHT JOIN (select player2, SUM(result) from us_men_2013 GROUP BY player2) ON player1 = player2;
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+SELECT * FROM (select player1, COUNT(result) from us_men_2013 GROUP BY player1)
+LEFT JOIN (select player2, COUNT(result) from us_men_2013 GROUP BY player2) ON player1=player2;
+SELECT * FROM (select player1, COUNT(result) from us_men_2013 GROUP BY player1) LEFT JOIN (select player2, COUNT(result) from us_men_2013 GROUP BY player2) ON player1=player2;
+SELECT * FROM (select player1, COUNT(result) from us_men_2013 GROUP BY player1) LEFT JOIN (select player2, COUNT(result) from us_men_2013 GROUP BY player2) ON us_men_2013.player1=us_men_2013.player2;
+SELECT * FROM (select player1, COUNT(result) from us_men_2013 GROUP BY player1);
+select player1, COUNT(result) from us_men_2013 GROUP BY player1;
+create table player1_us (select player1, COUNT(result) from us_men_2013 GROUP BY player1);
+create table player2_us (select player2, COUNT(result) from us_men_2013 GROUP BY player2);
+SELECT * from player1_us
+UNION
+SELECT * from player2_us;
+SELECT * from player1_us UNION SELECT * from player2_us;
+SELECT * from player1_us UNION ALL SELECT * from player2_us;
+create table players_us (SELECT * from player1_us UNION ALL SELECT * from player2_us);
+(SELECT * from player1_us UNION ALL SELECT * from player2_us);
+(SELECT * from player1_us) UNION ALL (SELECT * from player2_us);
+create table players_us((SELECT * from player1_us) UNION ALL (SELECT * from player2_us));
+(SELECT * from player1_us) UNION ALL (SELECT * from player2_us);
+((SELECT * from player1_us) UNION ALL (SELECT * from player2_us));
+create table players_us(SELECT * from player1_us) UNION ALL (SELECT * from player2_us);
+show players_us
+;
+show tables;
+show players_us
+;
+describe players_us;
+show columbs from players_us;
+show columns from players_us;
+
+delete players_us;
+drop table player1_us
+;
+show tables;
+drop table players2_us and players_us;
+drop table players2_us and drop table players_us;
+drop table players2_us;
+drop table player2_us;
+drop table players_us;
+create table player1_us (select player1, SUM(result) from us_men_2013 GROUP BY player1);
+create table player2_us (select player2, SUM(result) from us_men_2013 GROUP BY player2);
+create table playerall_us(SELECT * from player1_us) UNION ALL (SELECT * from player2_us);
+select * from playerall_us;
+select player1, SUM(result) from playerall_us GROUP BY player1;
+drop table playerall_us;
+create table playerall_us(SELECT * from player1_us) UNION ALL (SELECT * from player2_us);
+select * from playerall_us;
+select player1 as player, SUM(SUM(result)) as win from playerall_us GROUP BY player1;
+alter table player1_us change SUM(result) win INT;
+alter table player1_us change SUM(result) win;
+drop table player1_us;
+drop table player2_us;
+drop table playerall_us;
+create table player1_us (select player1 as player, SUM(result) as win from us_men_2013 GROUP BY player1);
+select * from player1_us;
+create table player2_us (select player2 as player, SUM(result) as win from us_men_2013 GROUP BY player2);
+create table playerall_us(SELECT * from player1_us) UNION ALL (SELECT * from player2_us);
+select player, win from playerall_us GROUP BY player;
+select player, SUM(win) from playerall_us GROUP BY player;
+create table mens_us(select player, SUM(win) from playerall_us GROUP BY player);
+SELECT * from playerall_us ORDER BY win DESC;
+alter table playerall_us modify(select player, SUM(win) from playerall_us GROUP BY player)
+SELECT * from men_us ORDER BY win DESC;
+SELECT * from mens_us ORDER BY win DESC;
+SELECT * from mens_us
+;
+drop table playerall_us
+;
+create table playerall_us(SELECT * from player1_us) UNION ALL (SELECT * from player2_us);
+select * from playerall_us;
+create table mens_us(select player, SUM(win) as wins from playerall_us GROUP BY player);
+drop table mens_us;
+create table mens_us(select player, SUM(win) as wins from playerall_us GROUP BY player);
+SELECT * from mens_us ORDER BY win DESC;
+SELECT * from mens_us ORDER BY wins DESC;
+show tables;
+create table player1_fr (select player1 as player, SUM(result) as win from french_men_2013 GROUP BY player1);
+create table player2_fr (select player2 as player, SUM(result) as win from french_men_2013 GROUP BY player2);
+create table playerall_us(SELECT * from player1_fr) UNION ALL (SELECT * from player2_fr);
+create table playerall_fr(SELECT * from player1_fr) UNION ALL (SELECT * from player2_fr);
+create table mens_fr(select player, SUM(win) as wins from playerall_fr GROUP BY player);
+create table player1_aus (select player1 as player, SUM(result) as win from aus_men_2013 GROUP BY player1);
+create table player2_aus (select player2 as player, SUM(result) as win from aus_men_2013 GROUP BY player2);
+create table playerall_aus(SELECT * from player1_aus) UNION ALL (SELECT * from player2_aus);
+create table mens_aus(select player, SUM(win) as wins from playerall_aus GROUP BY player);
+create table player1_wim (select player1 as player, SUM(result) as win from wimbledon_men_2013 GROUP BY player1);
+create table player2_wim (select player2 as player, SUM(result) as win from wimbledon_men_2013 GROUP BY player2);
+create table playerall_wim(SELECT * from player1_wim) UNION ALL (SELECT * from player2_wim);
+create table mens_wim(select player, SUM(win) as wins from playerall_wim GROUP BY player);
+show tables;
+select * from playerall_wim
+;
+select * from playerall_fr
+;
+select * from playerall_aus
+;
+create table join_fr_aus(SELECT * from mens_fr) UNION ALL (SELECT * from mens_aus);
+create table join_mens_all(SELECT * from join_fr_aus) UNION ALL (SELECT * from mens_us);
+create table final_mens_all(select player, SUM(win) as wins from join_mens_all GROUP BY player);
+create table final_mens_all(select player, SUM(wins) as wins from join_mens_all GROUP BY player);
+SELECT * from final_mens_all ORDER BY wins DESC;
